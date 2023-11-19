@@ -12,6 +12,7 @@ const UserView = () => {
   const [destination, setDestination] = useState(null);
   const [directions, setDirections] = useState(null);
 
+  //el useEffect sirve cuando se obtiene el dato de coordenada, el efecto es el envío de datos.
   useEffect(() => {
     const socket = io('http://localhost:7000'); 
 
