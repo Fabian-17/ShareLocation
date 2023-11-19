@@ -9,10 +9,19 @@ import { Server as SocketServer } from 'socket.io';
 
 const app = express();
 const httpServer = createServer(app);
-const io = new SocketServer(httpServer);
+const io = new SocketServer(httpServer, {
+  cors: {
+    origin: 'http://localhost:5173', 
+    methods: ['GET', 'POST'],
+  },
+});
 
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: '*',
+  }
+));
 app.use(express.json());
 // Pasa el objeto io a las rutas
 app.use((req, res, next) => {
@@ -38,7 +47,7 @@ io.on('connection', (socket) => {
     });
   });
 
-app.listen(environment.PORT, () => {
+httpServer.listen(environment.PORT, () => {
     console.log(`Server running on port ${environment.PORT}`)
     connectDB();
 });

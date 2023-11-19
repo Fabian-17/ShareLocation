@@ -1,7 +1,7 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
 export const environment = {
-    PORT: process.env.PORT || '8000',
+    PORT: process.env.PORT || '7000',
     DB: {
       DB_NAME: process.env.DB_NAME || 'mapa',
       DB_HOST: process.env.DB_HOST || 'localhost',
